@@ -1,0 +1,25 @@
+const tab = [
+  { industry: "MDE", name: "PZT" },
+  { industry: "RDS", name: "DROGOWA" },
+  { industry: "CST", name: "KONSTRUKCYJNA" },
+  { industry: "ARC", name: "ARCHITEKTONICZNA" },
+  { industry: "SWD", name: "SANITARNA" },
+  { industry: "SWS", name: "KONSTRUKCYJNA" },
+  { industry: "ELE", name: "ELEKTROENERGETYCZNA" },
+  { industry: "ELN", name: "ELEKTROENERGETYCZNA" },
+  { industry: "LIG", name: "ELEKTROENERGETYCZNA" },
+  { industry: "GAS", name: "GAZOWA" },
+  { industry: "WTS", name: "WODOCIĄGOWA" },
+  { industry: "SWN", name: "KANALIZACYJNA" },
+  { industry: "TEL", name: "TELEKOMUNIKACYJNA" },
+  { industry: "TEN", name: "TELEKOMUNIKACYJNA" },
+  { industry: "MEL", name: "MELIORACYJNA" },
+  { industry: "GRN", name: "ZIELEŃ" },
+  { industry: "BRD", name: "ROZBIÓREK" },
+  { industry: "HLP", name: "KONSTRUKCYJNA" },
+  { industry: "GEO", name: "GEOTECHNICZNA" },
+  { industry: "GIM", name: "GEOTECHNICZNA" },
+  { industry: "OHS", name: "DROGOWA" },
+];
+
+module.exports = tab;
