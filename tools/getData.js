@@ -54,10 +54,11 @@ module.exports = async function giveData() {
   sheet1.getColumn("B").values.forEach((e, index) => {
     if (e.toLowerCase().includes("tom ")) {
       packageNames.push({
-        volumeNumber: e, packageName: sheet1.getColumn("C").values[index]
-      })
+        volumeNumber: e,
+        packageName: sheet1.getColumn("C").values[index],
+      });
     }
-  })
+  });
   // packageNames = sheet1.getColumn("C").values;
   return packageNames;
 };

@@ -14,12 +14,12 @@ async function getData() {
 
 getData();
 
-api.post("/creatingPages/sendPageValues/:vol/:rev", async (req, res) => {
+api.post("/sendPageValues/:vol/:rev", async (req, res) => {
   const { vol, rev } = req.params;
   await makePage(vol, rev);
   const number = `${Math.floor(Math.random() * 100)}`;
   res.json(number);
-  api.get(`/creatingPages/downloadPage`, (req, res) => {
+  api.get(`/downloadPage`, (req, res) => {
     res.download(path.join(__dirname, "..", "My Document.docx"), function (
       err
     ) {
@@ -32,7 +32,7 @@ api.post("/creatingPages/sendPageValues/:vol/:rev", async (req, res) => {
   });
 });
 
-api.get("/creatingPages/namesRequest", (req, res) => {
+api.get("/namesRequest", (req, res) => {
   getData();
   res.json(packageNames);
 });

@@ -2,13 +2,8 @@ const passport = require("passport");
 const passportJWT = require("passport-jwt");
 const User = require("../models/User.model");
 
-const JwtStrategy = passportJWT.Strategy;
-const ExtractJwt = passportJWT.ExtractJwt;
-
-const opts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.JWT_SECRET,
-};
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
 
 function verify(payload, done) {
   return User.findOne({ _id: payload.id })
@@ -16,8 +11,11 @@ function verify(payload, done) {
     .catch((err) => done(err));
 }
 
-function strategyLogIn() {
+module.exports = () => {
+  const config = {
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: process.env.JWT_SECRET,
+  };
+  passport.use(User.createStrategy());
   passport.use(new JWTStrategy(config, verify));
-}
-
-module.exports = strategyLogIn;
+};

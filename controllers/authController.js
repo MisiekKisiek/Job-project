@@ -18,14 +18,16 @@ async function register(req, res, next) {
       console.log("User has been added successfully.");
     }
   });
-
   res.json("Wysłano prośbę o rejestrację.");
   next();
 }
 
 async function login(req, res, next) {
-  //   const token = jwt.sign({})
-  res.json("User has been logged.");
+  const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, {
+    expiresIn: 30,
+  });
+  res.send({ token });
+  next();
 }
 
 module.exports = { register, login };
