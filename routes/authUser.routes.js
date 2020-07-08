@@ -7,11 +7,7 @@ module.exports = () => {
   const api = Router();
 
   api.post("/register", AuthController.register);
-  // api.post(
-  //   "/login",
-  //   passport.authenticate("local", { session: false }),
-  //   AuthController.login
-  // );
+
   api.post(
     "/login",
     passport.authenticate("local", { session: false }),

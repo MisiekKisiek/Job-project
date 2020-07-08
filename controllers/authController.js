@@ -18,7 +18,9 @@ async function register(req, res, next) {
       console.log("User has been added successfully.");
     }
   });
-  res.json("Wysłano prośbę o rejestrację.");
+  // res.json(req.body);
+  res.json("git.");
+  console.log(req.body);
   next();
 }
 
