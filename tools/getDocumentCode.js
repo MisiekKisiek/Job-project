@@ -17,7 +17,11 @@ module.exports = async function (volume) {
   const area = rowsLoaded.map((e) => e[9])[index];
   const industry = rowsLoaded.map((e) => e[10])[index];
   const number = rowsLoaded.map((e) => e[12])[index];
-
-  code = `E-KRAK-MCS-E-${area}-${industry}-SPC-${number}`;
+  const checkIsSpecification = number.charAt(0) + number.charAt(1);
+  if (checkIsSpecification === "14" || checkIsSpecification === "16") {
+    code = `E-KRAK-MCS-E-${area}-${industry}-SST-${number}`;
+  } else {
+    code = `E-KRAK-MCS-E-${area}-${industry}-SPC-${number}`;
+  }
   return code;
 };

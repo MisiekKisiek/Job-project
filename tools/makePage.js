@@ -253,7 +253,7 @@ module.exports = async function makePage(volume, revision) {
     children: [],
   });
 
-  await Packer.toBuffer(doc).then((buffer) => {
-    fs.writeFileSync("My Document.docx", buffer);
+  await Packer.toBuffer(doc).then(async function (buffer) {
+    fs.writeFileSync(`./pages/${await getDocumentCode(volume)}-${revision}-OPIS.docx`, buffer);
   });
 };

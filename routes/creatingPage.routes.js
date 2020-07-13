@@ -19,17 +19,17 @@ api.post("/sendPageValues/:vol/:rev", async (req, res) => {
   await makePage(vol, rev);
   const number = `${Math.floor(Math.random() * 100)}`;
   res.json(number);
-  api.get(`/downloadPage`, (req, res) => {
-    res.download(path.join(__dirname, "..", "My Document.docx"), function (
-      err
-    ) {
-      if (err) {
-        console.log("blad", err);
-      } else {
-        console.log("oki");
-      }
-    });
-  });
+  // api.get(`/downloadPage`, (req, res) => {
+  //   res.download(path.join(__dirname, "..", "My Document.docx"), function (
+  //     err
+  //   ) {
+  //     if (err) {
+  //       console.log("blad", err);
+  //     } else {
+  //       console.log("oki");
+  //     }
+  //   });
+  // });
 });
 
 api.get("/namesRequest", (req, res) => {
