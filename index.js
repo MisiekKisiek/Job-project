@@ -10,9 +10,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dbConfig = require("./config/database.config");
 
+//Routes imports
 const creatingPageRoutes = require("./routes/creatingPage.routes");
 const documentationRegisterRoutes = require("./routes/documentationRegister.routes");
 const authUserRoutes = require("./routes/authUser.routes");
+const getCommentRoutes = require('./routes/getComment.routes')
 
 const passport = require("./config/passport.config");
 passport();
@@ -45,8 +47,8 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, "..", "1", "build")));
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //Express Routers
 app.use("/creatingPages", routeVolumeAndRevisionSave, creatingPageRoutes);
@@ -61,8 +63,10 @@ app.get(`/downloadPage`, async function (req, res) {
     }
   });
 });
+app.use('/checkIsLogged', jwtAuth, (req, res) => { res.send() })
 app.use("/documentationRegister", documentationRegisterRoutes);
 app.use("/auth", authUserRoutes());
+app.use(getCommentRoutes())
 
 app.listen(9000, "127.0.0.1", () => {
   console.log("Serwer nasłuchuje");

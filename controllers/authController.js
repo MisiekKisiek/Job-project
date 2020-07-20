@@ -16,17 +16,16 @@ async function register(req, res, next) {
       console.log("error", err);
     } else {
       console.log("User has been added successfully.");
+
     }
   });
-  // res.json(req.body);
-  res.json("git.");
-  console.log(req.body);
+  res.json("Użytkownik został zarejestrowany");
   next();
 }
 
 async function login(req, res, next) {
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, {
-    expiresIn: 30,
+    expiresIn: 12000,
   });
   res.send({ token });
   next();
