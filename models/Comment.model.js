@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 
+const SingleCommentSchema = new mongoose.Schema({
+    comment: String,
+    author: String,
+    date: { type: Date, default: Date.now }
+})
+
 const CommentSchema = new mongoose.Schema({
     transmittal: String,
-    comment: { type: String, comment: Array, user: String, date: { type: Date, default: Date.now } }
+    comments: [SingleCommentSchema]
 })
 
 module.exports = mongoose.model('Comment', CommentSchema)
