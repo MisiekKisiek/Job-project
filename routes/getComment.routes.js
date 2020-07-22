@@ -10,21 +10,21 @@ module.exports = () => {
     const api = Router();
 
     api.post('/Send-comment', async (req, res) => {
-        const { comment, number } = req.body
+        const { comment, number, author } = req.body
         if (await Comment.findOne({ transmittal: number }).exec() === null) {
-            const commentNew = new Comment({ transmittal: number, comments: [{ comment, author: "TEST" }], })
+            const commentNew = new Comment({ transmittal: number, comments: [{ comment, author }], })
             commentNew.save((err, commentNew) => {
                 if (err) return console.log(err)
-                console.log('Udało się dodać nowy dokument', commentNew)
+                console.log('Udało się dodać nowy dokument')
             })
         } else {
-            const singleComment = { comment, author: "ADD_COM" };
+            const singleComment = { comment, author };
             const commentNew = await Comment.findOne({ transmittal: number }).exec()
             commentNew.comments.push(singleComment)
-            console.log('Udało się znaleźć nowy dokument ', commentNew)
+            console.log('Udało się znaleźć nowy dokument')
             commentNew.save((err, commentNew) => {
                 if (err) return console.log(err)
-                console.log('Udało się dodać nowy dokument ', commentNew)
+                console.log('Udało się dodać nowy dokument')
             })
         }
         res.json('git')

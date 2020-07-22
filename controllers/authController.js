@@ -24,10 +24,13 @@ async function register(req, res, next) {
 }
 
 async function login(req, res, next) {
+  const { email } = req.body
   const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, {
     expiresIn: 12000,
   });
-  res.send({ token });
+  const username = await User.findOne({ email }).exec()
+  const { first_name, last_name } = username
+  res.send({ token, first_name, last_name });
   next();
 }
 
